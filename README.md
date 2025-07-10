@@ -69,7 +69,7 @@ If you have VS Code installed:
 
 1. Install the "Live Server" extension.
 2. Open the folder in VS Code.
-3. Right-click `index.html` and select **"Open with Live Server"**.
+3. Right-click `index.html` and select "Open with Live Server".
 
 ##Who Is This For?
 
