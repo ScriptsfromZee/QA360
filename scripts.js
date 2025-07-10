@@ -247,8 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  // Country Generator Logic
-const slider = document.getElementById('country-count-slider');
+  const slider = document.getElementById('country-count-slider');
 const sliderValueDisplay = document.getElementById('slider-value');
 const getCountriesBtn = document.getElementById('get-countries-btn');
 const countriesList = document.getElementById('countries-list');
@@ -263,39 +262,43 @@ const countryData = [
   "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt"
 ];
 
-// Update live slider value
+// ✅ Show correct label on slider move
 slider.addEventListener('input', () => {
-  sliderValueDisplay.textContent = slider.value;
+  const count = parseInt(slider.value, 10);
+  sliderValueDisplay.textContent = `${count} ${count === 1 ? 'Country' : 'Countries'}`;
 });
 
-// Handle button click
+// ✅ Populate the list on button click (without resetting every time)
 getCountriesBtn.addEventListener('click', () => {
-  const requestedCount = parseInt(slider.value, 10);
+  const count = parseInt(slider.value, 10);
+  validationMessage.textContent = '';
 
-  if (requestedCount < 1 || requestedCount > 50) {
-    validationMessage.textContent = "Please select a value between 1 and 50.";
-    validationMessage.style.color = "red";
+  if (count < 1 || count > 50) {
+    validationMessage.style.color = 'red';
+    validationMessage.textContent = 'Please select between 1 and 50.';
     return;
   }
 
   const currentCount = countriesList.children.length;
 
-  if (currentCount < requestedCount) {
-    // Add more countries
-    for (let i = currentCount; i < requestedCount; i++) {
+  if (currentCount < count) {
+    for (let i = currentCount; i < count; i++) {
       const li = document.createElement('li');
       li.textContent = countryData[i % countryData.length];
       countriesList.appendChild(li);
     }
-  } else if (currentCount > requestedCount) {
-    // Remove excess countries
-    for (let i = currentCount - 1; i >= requestedCount; i--) {
+  } else if (currentCount > count) {
+    for (let i = currentCount - 1; i >= count; i--) {
       countriesList.removeChild(countriesList.children[i]);
     }
   }
 
-  validationMessage.textContent = `Showing ${requestedCount} countries.`;
-  validationMessage.style.color = "green";
+  validationMessage.style.color = 'green';
+  validationMessage.textContent = `Showing ${count} ${count === 1 ? 'country' : 'countries'}.`;
 });
 
+// ✅ Set label on initial load
+slider.dispatchEvent(new Event('input'));
+
+  
 });
