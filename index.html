@@ -262,21 +262,29 @@
         </div>
 
 <div class="card">
-  <h3>13. Country Generator</h3> 
-  <label for="country-count-slider">
+  <h3>13. Country Generator</h3>
+
+  <label for="country-count-slider" style="display: block;">
     Select number of countries: <span id="slider-value"></span>
   </label>
+
   <input
     type="range"
     id="country-count-slider"
     min="1"
     max="50"
     value="1"
-    style="width: 100%; margin-top: 10px; display: block;"
+    style="width: 100%; margin-top: 10px;"
   />
+
   <button id="get-countries-btn" style="margin-top: 10px;">Get Countries</button>
-  <ul id="countries-list" style="margin-top: 15px; max-height: 200px; overflow-y: auto; padding-left: 20px;"></ul>
-  <p id="validation-message" style="color: green; margin-top: 10px; font-weight: 600;"></p>
+
+  <ul
+    id="countries-list"
+    style="margin-top: 15px; max-height: 180px; overflow-y: auto; padding-left: 20px; margin-bottom: 0;"
+  ></ul>
+
+  <p id="validation-message" style="margin-top: 10px; font-weight: 600;"></p>
 </div>
 
 <script src="scripts.js"></script>

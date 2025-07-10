@@ -247,63 +247,55 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.getElementById('country-count-slider');
-    const sliderValueDisplay = document.getElementById('slider-value');
-    const getCountriesBtn = document.getElementById('get-countries-btn');
-    const countriesList = document.getElementById('countries-list');
-    const validationMessage = document.getElementById('validation-message');
-  
-    const countryData = [
-      "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia",
-      "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
-      "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria",
-      "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic",
-      "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus",
-      "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt"
-    ];
-  
-    // Set slider width to 100% to avoid extra space:
-    slider.style.width = '100%';
-  
-    // Display initial slider value
-    sliderValueDisplay.textContent = slider.value;
-  
-    slider.addEventListener('input', () => {
-      sliderValueDisplay.textContent = slider.value;
-      // Don't reset list or message on slider change
-    });
-  
-    getCountriesBtn.addEventListener('click', () => {
-      const count = parseInt(slider.value, 10);
-      validationMessage.textContent = '';
-  
-      if (count < 1 || count > 50) {
-        validationMessage.style.color = 'red';
-        validationMessage.textContent = 'Please select a value between 1 and 50.';
-        return;
-      }
-  
-      const currentItems = countriesList.children.length;
-  
-      if (currentItems < count) {
-        // Add countries one by one without resetting
-        for (let i = currentItems; i < count; i++) {
-          const li = document.createElement('li');
-          li.textContent = countryData[i % countryData.length];
-          countriesList.appendChild(li);
-        }
-      } else if (currentItems > count) {
-        // Remove countries one by one from the end
-        for (let i = currentItems - 1; i >= count; i--) {
-          countriesList.removeChild(countriesList.children[i]);
-        }
-      }
-      // If equal, do nothing
-  
-      validationMessage.style.color = 'green';
-      validationMessage.textContent = `Showing ${count} countries as requested.`;
-    });
-  });
-  
+  // Country Generator Logic
+const slider = document.getElementById('country-count-slider');
+const sliderValueDisplay = document.getElementById('slider-value');
+const getCountriesBtn = document.getElementById('get-countries-btn');
+const countriesList = document.getElementById('countries-list');
+const validationMessage = document.getElementById('validation-message');
+
+const countryData = [
+  "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia",
+  "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
+  "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria",
+  "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic",
+  "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus",
+  "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt"
+];
+
+// Update live slider value
+slider.addEventListener('input', () => {
+  sliderValueDisplay.textContent = slider.value;
+});
+
+// Handle button click
+getCountriesBtn.addEventListener('click', () => {
+  const requestedCount = parseInt(slider.value, 10);
+
+  if (requestedCount < 1 || requestedCount > 50) {
+    validationMessage.textContent = "Please select a value between 1 and 50.";
+    validationMessage.style.color = "red";
+    return;
+  }
+
+  const currentCount = countriesList.children.length;
+
+  if (currentCount < requestedCount) {
+    // Add more countries
+    for (let i = currentCount; i < requestedCount; i++) {
+      const li = document.createElement('li');
+      li.textContent = countryData[i % countryData.length];
+      countriesList.appendChild(li);
+    }
+  } else if (currentCount > requestedCount) {
+    // Remove excess countries
+    for (let i = currentCount - 1; i >= requestedCount; i--) {
+      countriesList.removeChild(countriesList.children[i]);
+    }
+  }
+
+  validationMessage.textContent = `Showing ${requestedCount} countries.`;
+  validationMessage.style.color = "green";
+});
+
 });
