@@ -5,260 +5,170 @@ function toggleQaMenu() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Dynamic ID
+  // === Dynamic ID ===
   const dynamicButton = document.getElementById("dynamic-btn");
   if (dynamicButton) {
     dynamicButton.id = `dynamic-btn-${Math.floor(Math.random() * 10000)}`;
   }
 
-  // Radio and Checklist Form
+  // === AJAX Radio and Checkbox Form ===
   const ajaxBtn = document.getElementById("ajax-btn");
-  if (ajaxBtn) {
+  const ajaxContainer = document.getElementById("ajax-container");
+  if (ajaxBtn && ajaxContainer) {
     ajaxBtn.addEventListener("click", () => {
-      const ajaxContainer = document.getElementById("ajax-container");
-      if (ajaxContainer) {
-        if (ajaxContainer.innerHTML.trim() === "") {
-          ajaxContainer.innerHTML = "Loading form...";
-          setTimeout(() => {
-            ajaxContainer.innerHTML = `
-              <form>
-                <p><strong>Choose your role:</strong></p>
-                <label><input type="radio" name="role" value="Tester"> Tester</label><br>
-                <label><input type="radio" name="role" value="Developer"> Developer</label><br>
-                <label><input type="radio" name="role" value="Manager"> Manager</label><br><br>
+      ajaxContainer.innerHTML = "Loading form...";
+      setTimeout(() => {
+        ajaxContainer.innerHTML = `
+          <form>
+            <p><strong>Choose your role:</strong></p>
+            <label><input type="radio" name="role" value="Tester"> Tester</label><br>
+            <label><input type="radio" name="role" value="Developer"> Developer</label><br>
+            <label><input type="radio" name="role" value="Manager"> Manager</label><br><br>
 
-                <p><strong>Select skills:</strong></p>
-                <label><input type="checkbox" name="skills" value="HTML"> HTML</label><br>
-                <label><input type="checkbox" name="skills" value="JavaScript"> JavaScript</label><br>
-                <label><input type="checkbox" name="skills" value="Python"> Python</label><br><br>
+            <p><strong>Select skills:</strong></p>
+            <label><input type="checkbox" name="skills" value="HTML"> HTML</label><br>
+            <label><input type="checkbox" name="skills" value="JavaScript"> JavaScript</label><br>
+            <label><input type="checkbox" name="skills" value="Python"> Python</label><br><br>
 
-                <button type="button" id="close-form">Close Form</button>
-              </form>
-            `;
-            const closeFormBtn = document.getElementById("close-form");
-            if (closeFormBtn) {
-              closeFormBtn.addEventListener("click", () => {
-                ajaxContainer.innerHTML = "";
-                ajaxBtn.disabled = false;
-              });
-            }
-          }, 1500);
-        } else {
+            <button type="button" id="close-form">Close Form</button>
+          </form>
+        `;
+
+        const closeFormBtn = document.getElementById("close-form");
+        closeFormBtn?.addEventListener("click", () => {
           ajaxContainer.innerHTML = "";
-          ajaxBtn.disabled = false;
-        }
-      }
+        });
+      }, 1500);
     });
   }
 
-  // Load User Info (demo)
-  const loadUserBtn = document.getElementById("load-user-btn");
-  if (loadUserBtn) {
-    loadUserBtn.addEventListener("click", () => {
-      const userInfo = document.getElementById("user-info");
-      if (userInfo) {
-        userInfo.textContent = "Loading user data...";
-        setTimeout(() => {
-          userInfo.innerHTML = `
-            <strong>Name:</strong> Bug Hunter Zee<br/>
-            <strong>Email:</strong> bughunter@bugs.com
-          `;
-        }, 2000);
-      }
-    });
-  }
-
-  // Mouse Hover Reveal
+  // === Hover Reveal ===
   const hoverArea = document.getElementById("hover-area");
   const secretText = document.getElementById("secret-text");
-  if (hoverArea && secretText) {
-    hoverArea.addEventListener("mouseover", () => {
-      secretText.style.display = "block";
-    });
-    hoverArea.addEventListener("mouseout", () => {
-      secretText.style.display = "none";
-    });
-  }
+  hoverArea?.addEventListener("mouseover", () => secretText.style.display = "block");
+  hoverArea?.addEventListener("mouseout", () => secretText.style.display = "none");
 
-  // JavaScript Alert
+  // === JS Alert ===
   const alertBtn = document.getElementById("alert-btn");
-  if (alertBtn) {
-    alertBtn.addEventListener("click", () => {
-      alert("Peek-a-boo!");
-    });
-  }
+  alertBtn?.addEventListener("click", () => alert("Peek-a-boo!"));
 
-  // Class Attribute Click
+  // === Class Selector ===
   const primaryBtn = document.querySelector(".primary-button");
-  if (primaryBtn) {
-    primaryBtn.addEventListener("click", () => {
-      alert("Class attribute element clicked!");
-    });
-  }
+  primaryBtn?.addEventListener("click", () => alert("Class attribute element clicked!"));
 
-  // Load Delay with Reset
+  // === Load Delay ===
   const loadDelayBtn = document.getElementById("load-delay-btn");
   const delayedSection = document.getElementById("delayed-section");
-  if (loadDelayBtn && delayedSection) {
-    loadDelayBtn.addEventListener("click", () => {
-      delayedSection.style.display = "block";
-      delayedSection.textContent = "Loading...";
-      setTimeout(() => {
-        delayedSection.textContent = "I hope I did not take too much time";
-        setTimeout(() => {
-          delayedSection.style.display = "none";
-          delayedSection.textContent = "";
-        }, 3000);
-      }, 2500);
-    });
-  }
+  loadDelayBtn?.addEventListener("click", () => {
+    delayedSection.style.display = "block";
+    delayedSection.textContent = "Loading...";
+    setTimeout(() => {
+      delayedSection.textContent = "I hope I did not take too much time";
+    }, 2500);
+  });
 
-  // Client-side Delay
+  // === Client-Side Delay ===
   const clientDelayBtn = document.getElementById("client-delay-btn");
-  if (clientDelayBtn) {
-    clientDelayBtn.addEventListener("click", () => {
-      const clientContent = document.getElementById("client-content");
-      if (clientContent) {
-        clientContent.textContent = "Calculating... please wait.";
-        setTimeout(() => {
-          clientContent.textContent = "Calculation complete!";
-        }, 3000);
-      }
-    });
-  }
+  const clientContent = document.getElementById("client-content");
+  clientDelayBtn?.addEventListener("click", () => {
+    clientContent.textContent = "Calculating... please wait.";
+    setTimeout(() => clientContent.textContent = "Calculation complete!", 3000);
+  });
 
-  // Click Event Simulation
+  // === Click Event Simulation ===
   const brokenButton = document.getElementById("broken-button");
   const clickResult = document.getElementById("click-result");
   let clickCount = 0;
-  if (brokenButton && clickResult) {
-    brokenButton.addEventListener("click", () => {
-      clickCount++;
-      if (clickCount === 1) {
-        clickResult.textContent = "Button didn’t work. Try clicking again!";
-      } else {
-        clickResult.textContent = "Button clicked successfully!";
-        setTimeout(() => {
-          clickResult.textContent = "";
-          clickCount = 0;
-        }, 1500);
-      }
-    });
-  }
+  brokenButton?.addEventListener("click", () => {
+    clickCount++;
+    clickResult.textContent = clickCount === 1 ? "Button didn’t work. Try clicking again!" : "Button clicked successfully!";
+    if (clickCount > 1) {
+      setTimeout(() => {
+        clickResult.textContent = "";
+        clickCount = 0;
+      }, 1500);
+    }
+  });
 
-  // Text Input Capture
+  // === Text Input Display ===
   const textInput = document.getElementById("text-problem");
   const textDisplay = document.getElementById("text-display");
-  if (textInput && textDisplay) {
-    textInput.addEventListener("blur", () => {
-      textDisplay.textContent = "You typed: " + textInput.value;
-    });
-  }
+  textInput?.addEventListener("blur", () => {
+    textDisplay.textContent = `You typed: ${textInput.value}`;
+  });
 
-  // Dynamic Table Simulation
+  // === Dynamic Table ===
   const tableBody = document.getElementById("dynamic-table-body");
   const sampleUsers = [
     { id: 101, name: "Alice Johnson", status: "Active" },
     { id: 102, name: "Bob Smith", status: "Inactive" },
-    { id: 103, name: "Charlie Lee", status: "Pending" },
+    { id: 103, name: "Charlie Lee", status: "Pending" }
   ];
   let toggle = true;
-  if (tableBody) {
-    setInterval(() => {
-      sampleUsers.forEach((user) => {
-        if (toggle) {
-          user.status = user.status === "Active" ? "Inactive" : "Active";
-        } else {
-          user.status = user.status === "Pending" ? "Active" : "Pending";
-        }
-      });
-      toggle = !toggle;
-      tableBody.innerHTML = sampleUsers
-        .map(
-          (user) => `
-          <tr>
-            <td>${user.id}</td>
-            <td>${user.name}</td>
-            <td>${user.status}</td>
-          </tr>`
-        )
-        .join("");
-    }, 5000);
-  }
+  setInterval(() => {
+    sampleUsers.forEach(user => {
+      user.status = toggle ? (user.status === "Active" ? "Inactive" : "Active") : (user.status === "Pending" ? "Active" : "Pending");
+    });
+    toggle = !toggle;
+    tableBody.innerHTML = sampleUsers.map(user => `
+      <tr>
+        <td>${user.id}</td>
+        <td>${user.name}</td>
+        <td>${user.status}</td>
+      </tr>`).join("");
+  }, 5000);
 
-  // File Upload Logic
+  // === File Upload ===
   const dropzone = document.getElementById("dropzone");
   const fileInput = document.getElementById("file-upload");
   const fileList = document.getElementById("file-list");
   const uploadedFiles = new Set();
 
-  function updateList() {
-    if (fileList) {
-      if (uploadedFiles.size === 0) {
-        fileList.innerHTML = "<li>No files uploaded yet.</li>";
-        return;
-      }
-      fileList.innerHTML = "";
-      uploadedFiles.forEach((name) => {
+  const updateList = () => {
+    fileList.innerHTML = uploadedFiles.size === 0
+      ? "<li>No files uploaded yet.</li>"
+      : Array.from(uploadedFiles).map(name => {
         const li = document.createElement("li");
         li.textContent = name;
         const removeBtn = document.createElement("button");
         removeBtn.textContent = "Remove";
         removeBtn.style.marginLeft = "10px";
-        removeBtn.addEventListener("click", () => {
+        removeBtn.onclick = () => {
           uploadedFiles.delete(name);
           updateList();
-        });
+        };
         li.appendChild(removeBtn);
-        fileList.appendChild(li);
-      });
-    }
-  }
+        return li.outerHTML;
+      }).join("");
+  };
 
-  if (dropzone && fileInput && fileList) {
-    dropzone.addEventListener("click", () => fileInput.click());
+  dropzone?.addEventListener("click", () => fileInput.click());
+  fileInput?.addEventListener("change", () => {
+    Array.from(fileInput.files).forEach(file => uploadedFiles.add(file.name));
+    updateList();
+    fileInput.value = "";
+  });
 
-    fileInput.addEventListener("change", () => {
-      const files = Array.from(fileInput.files);
-      files.forEach((file) => {
-        if (!uploadedFiles.has(file.name)) {
-          uploadedFiles.add(file.name);
-        }
-      });
+  ["dragenter", "dragover"].forEach(evt => dropzone?.addEventListener(evt, e => {
+    e.preventDefault();
+    dropzone.classList.add("dragover");
+  }));
+
+  ["dragleave", "drop"].forEach(evt => dropzone?.addEventListener(evt, e => {
+    e.preventDefault();
+    dropzone.classList.remove("dragover");
+    if (evt === "drop") {
+      Array.from(e.dataTransfer.files).forEach(file => uploadedFiles.add(file.name));
       updateList();
-      fileInput.value = "";
-    });
+    }
+  }));
 
-    ["dragenter", "dragover"].forEach((evt) =>
-      dropzone.addEventListener(evt, (e) => {
-        e.preventDefault();
-        dropzone.classList.add("dragover");
-      })
-    );
-
-    ["dragleave", "drop"].forEach((evt) =>
-      dropzone.addEventListener(evt, (e) => {
-        e.preventDefault();
-        dropzone.classList.remove("dragover");
-        if (evt === "drop") {
-          const files = Array.from(e.dataTransfer.files);
-          files.forEach((file) => {
-            if (!uploadedFiles.has(file.name)) {
-              uploadedFiles.add(file.name);
-            }
-          });
-          updateList();
-        }
-      })
-    );
-  }
-
-  // Country Generator Feature
-  const slider = document.getElementById("country-count-slider");
-  const sliderValueDisplay = document.getElementById("slider-value");
-  const getCountriesBtn = document.getElementById("get-countries-btn");
-  const countriesList = document.getElementById("countries-list");
-  const validationMessage = document.getElementById("validation-message");
+  // === Country Generator ===
+  const slider = document.getElementById('country-count-slider');
+  const sliderValueDisplay = document.getElementById('slider-value');
+  const getCountriesBtn = document.getElementById('get-countries-btn');
+  const countriesList = document.getElementById('countries-list');
+  const validationMessage = document.getElementById('validation-message');
 
   const countryData = [
     "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia",
@@ -271,17 +181,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sliderValueDisplay.textContent = slider.value;
 
-  slider.addEventListener("input", () => {
+  slider?.addEventListener('input', () => {
     sliderValueDisplay.textContent = slider.value;
   });
 
-  getCountriesBtn.addEventListener("click", () => {
+  getCountriesBtn?.addEventListener('click', () => {
     const count = parseInt(slider.value, 10);
-    validationMessage.textContent = "";
+    validationMessage.textContent = '';
 
     if (count < 1 || count > 50) {
-      validationMessage.style.color = "red";
-      validationMessage.textContent = "Please select a value between 1 and 50.";
+      validationMessage.style.color = 'red';
+      validationMessage.textContent = 'Please select a value between 1 and 50.';
       return;
     }
 
@@ -289,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (currentItems < count) {
       for (let i = currentItems; i < count; i++) {
-        const li = document.createElement("li");
+        const li = document.createElement('li');
         li.textContent = countryData[i % countryData.length];
         countriesList.appendChild(li);
       }
@@ -299,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    validationMessage.style.color = "green";
+    validationMessage.style.color = 'green';
     validationMessage.textContent = `Showing ${count} countries as requested.`;
   });
 });
