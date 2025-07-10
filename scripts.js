@@ -5,211 +5,304 @@ function toggleQaMenu() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // === Dynamic ID ===
+  // Dynamic ID
   const dynamicButton = document.getElementById("dynamic-btn");
   if (dynamicButton) {
     dynamicButton.id = `dynamic-btn-${Math.floor(Math.random() * 10000)}`;
   }
 
-  // === AJAX Radio and Checkbox Form ===
+  //Radio and Checklist Form
   const ajaxBtn = document.getElementById("ajax-btn");
-  const ajaxContainer = document.getElementById("ajax-container");
-  if (ajaxBtn && ajaxContainer) {
+  if (ajaxBtn) {
     ajaxBtn.addEventListener("click", () => {
-      ajaxContainer.innerHTML = "Loading form...";
-      setTimeout(() => {
-        ajaxContainer.innerHTML = `
-          <form>
-            <p><strong>Choose your role:</strong></p>
-            <label><input type="radio" name="role" value="Tester"> Tester</label><br>
-            <label><input type="radio" name="role" value="Developer"> Developer</label><br>
-            <label><input type="radio" name="role" value="Manager"> Manager</label><br><br>
+      const ajaxContainer = document.getElementById("ajax-container");
+      if (ajaxContainer) {
+        if (ajaxContainer.innerHTML.trim() === "") {
+          ajaxContainer.innerHTML = "Loading form...";
+          setTimeout(() => {
+            ajaxContainer.innerHTML = `
+             <form>
+               <p><strong>Choose your role:</strong></p>
+               <label><input type="radio" name="role" value="Tester"> Tester</label><br>
+               <label><input type="radio" name="role" value="Developer"> Developer</label><br>
+               <label><input type="radio" name="role" value="Manager"> Manager</label><br><br>
 
-            <p><strong>Select skills:</strong></p>
-            <label><input type="checkbox" name="skills" value="HTML"> HTML</label><br>
-            <label><input type="checkbox" name="skills" value="JavaScript"> JavaScript</label><br>
-            <label><input type="checkbox" name="skills" value="Python"> Python</label><br><br>
+               <p><strong>Select skills:</strong></p>
+               <label><input type="checkbox" name="skills" value="HTML"> HTML</label><br>
+               <label><input type="checkbox" name="skills" value="JavaScript"> JavaScript</label><br>
+               <label><input type="checkbox" name="skills" value="Python"> Python</label><br><br>
 
-            <button type="button" id="close-form">Close Form</button>
-          </form>
-        `;
+               <button type="button" id="close-form">Close Form</button>
+             </form>
+           `;
 
-        const closeFormBtn = document.getElementById("close-form");
-        closeFormBtn?.addEventListener("click", () => {
+            const closeFormBtn = document.getElementById("close-form");
+            if (closeFormBtn) {
+              closeFormBtn.addEventListener("click", () => {
+                ajaxContainer.innerHTML = "";
+                ajaxBtn.disabled = false;
+              });
+            }
+          }, 1500);
+        } else {
           ajaxContainer.innerHTML = "";
-        });
-      }, 1500);
+          ajaxBtn.disabled = false;
+        }
+      }
     });
   }
 
-  // === Hover Reveal ===
+  // Load User Info Simulated
+  const loadUserBtn = document.getElementById("load-user-btn");
+  if (loadUserBtn) {
+    loadUserBtn.addEventListener("click", () => {
+      const userInfo = document.getElementById("user-info");
+      if (userInfo) {
+        userInfo.textContent = "Loading user data...";
+        setTimeout(() => {
+          userInfo.innerHTML = `
+              <strong>Name:</strong> Bug Hunter Zee<br/>
+              <strong>Email:</strong> bughunter@bugs.com
+            `;
+        }, 2000);
+      }
+    });
+  }
+
+  // Mouse Over Reveal
   const hoverArea = document.getElementById("hover-area");
   const secretText = document.getElementById("secret-text");
-  hoverArea?.addEventListener("mouseover", () => secretText.style.display = "block");
-  hoverArea?.addEventListener("mouseout", () => secretText.style.display = "none");
-
-  // === JS Alert ===
+  if (hoverArea && secretText) {
+    hoverArea.addEventListener("mouseover", () => {
+      secretText.style.display = "block";
+    });
+    hoverArea.addEventListener("mouseout", () => {
+      secretText.style.display = "none";
+    });
+  }
+  // Alert on Button Click
   const alertBtn = document.getElementById("alert-btn");
-  alertBtn?.addEventListener("click", () => alert("Peek-a-boo!"));
+  if (alertBtn) {
+    alertBtn.addEventListener("click", () => {
+      alert("Peek-a-boo!");
+    });
+  }
 
-  // === Class Selector ===
+  // Click on Element with Class Attribute
   const primaryBtn = document.querySelector(".primary-button");
-  primaryBtn?.addEventListener("click", () => alert("Class attribute element clicked!"));
-
-  // === Load Delay ===
+  if (primaryBtn) {
+    primaryBtn.addEventListener("click", () => {
+      alert("Class attribute element clicked!");
+    });
+  }
+  // Load Delay Section
   const loadDelayBtn = document.getElementById("load-delay-btn");
-  const delayedSection = document.getElementById("delayed-section");
-  loadDelayBtn?.addEventListener("click", () => {
-    delayedSection.style.display = "block";
-    delayedSection.textContent = "Loading...";
-    setTimeout(() => {
-      delayedSection.textContent = "I hope I did not take too much time";
-    }, 2500);
-  });
-
-  // === Client-Side Delay ===
+  if (loadDelayBtn) {
+    loadDelayBtn.addEventListener("click", () => {
+      const delayedSection = document.getElementById("delayed-section");
+      if (delayedSection) {
+        delayedSection.style.display = "none";
+        setTimeout(() => {
+          delayedSection.style.display = "block";
+        }, 2500);
+      }
+    });
+  }
+  // Client-side Delay
   const clientDelayBtn = document.getElementById("client-delay-btn");
-  const clientContent = document.getElementById("client-content");
-  clientDelayBtn?.addEventListener("click", () => {
-    clientContent.textContent = "Calculating... please wait.";
-    setTimeout(() => clientContent.textContent = "Calculation complete!", 3000);
-  });
-
-  // === Click Event Simulation ===
+  if (clientDelayBtn) {
+    clientDelayBtn.addEventListener("click", () => {
+      const clientContent = document.getElementById("client-content");
+      if (clientContent) {
+        clientContent.textContent = "Calculating... please wait.";
+        setTimeout(() => {
+          clientContent.textContent = "Calculation complete!";
+        }, 3000);
+      }
+    });
+  }
+  // Click Event Problem Simulation
   const brokenButton = document.getElementById("broken-button");
   const clickResult = document.getElementById("click-result");
   let clickCount = 0;
-  brokenButton?.addEventListener("click", () => {
-    clickCount++;
-    clickResult.textContent = clickCount === 1 ? "Button didn’t work. Try clicking again!" : "Button clicked successfully!";
-    if (clickCount > 1) {
-      setTimeout(() => {
-        clickResult.textContent = "";
-        clickCount = 0;
-      }, 1500);
-    }
-  });
+  if (brokenButton && clickResult) {
+    brokenButton.addEventListener("click", () => {
+      clickCount++;
+      if (clickCount === 1) {
+        clickResult.textContent = "Button didn’t work. Try clicking again!";
+      } else {
+        clickResult.textContent = "Button clicked successfully!";
+        setTimeout(() => {
+          clickResult.textContent = "";
+          clickCount = 0;
+        }, 1500);
+      }
+    });
+  }
 
-  // === Text Input Display ===
+  // Text Input Problem
   const textInput = document.getElementById("text-problem");
   const textDisplay = document.getElementById("text-display");
-  textInput?.addEventListener("blur", () => {
-    textDisplay.textContent = `You typed: ${textInput.value}`;
-  });
+  if (textInput && textDisplay) {
+    textInput.addEventListener("blur", () => {
+      textDisplay.textContent = "You typed: " + textInput.value;
+    });
+  }
 
-  // === Dynamic Table ===
+  // Dynamic Table
   const tableBody = document.getElementById("dynamic-table-body");
   const sampleUsers = [
     { id: 101, name: "Alice Johnson", status: "Active" },
     { id: 102, name: "Bob Smith", status: "Inactive" },
-    { id: 103, name: "Charlie Lee", status: "Pending" }
+    { id: 103, name: "Charlie Lee", status: "Pending" },
   ];
   let toggle = true;
-  setInterval(() => {
-    sampleUsers.forEach(user => {
-      user.status = toggle ? (user.status === "Active" ? "Inactive" : "Active") : (user.status === "Pending" ? "Active" : "Pending");
-    });
-    toggle = !toggle;
-    tableBody.innerHTML = sampleUsers.map(user => `
-      <tr>
-        <td>${user.id}</td>
-        <td>${user.name}</td>
-        <td>${user.status}</td>
-      </tr>`).join("");
-  }, 5000);
+  if (tableBody) {
+    setInterval(() => {
+      sampleUsers.forEach((user) => {
+        if (toggle) {
+          user.status = user.status === "Active" ? "Inactive" : "Active";
+        } else {
+          user.status = user.status === "Pending" ? "Active" : "Pending";
+        }
+      });
+      toggle = !toggle;
+      tableBody.innerHTML = sampleUsers
+        .map(
+          (user) => `
+            <tr>
+              <td>${user.id}</td>
+              <td>${user.name}</td>
+              <td>${user.status}</td>
+            </tr>`
+        )
+        .join("");
+    }, 5000);
+  }
 
-  // === File Upload ===
+  // File Upload Emulator with Remove Feature
   const dropzone = document.getElementById("dropzone");
   const fileInput = document.getElementById("file-upload");
   const fileList = document.getElementById("file-list");
   const uploadedFiles = new Set();
 
-  const updateList = () => {
-    fileList.innerHTML = uploadedFiles.size === 0
-      ? "<li>No files uploaded yet.</li>"
-      : Array.from(uploadedFiles).map(name => {
+  function updateList() {
+    if (fileList) {
+      if (uploadedFiles.size === 0) {
+        fileList.innerHTML = "<li>No files uploaded yet.</li>";
+        return;
+      }
+      fileList.innerHTML = "";
+      uploadedFiles.forEach((name) => {
         const li = document.createElement("li");
         li.textContent = name;
         const removeBtn = document.createElement("button");
         removeBtn.textContent = "Remove";
         removeBtn.style.marginLeft = "10px";
-        removeBtn.onclick = () => {
+        removeBtn.addEventListener("click", () => {
           uploadedFiles.delete(name);
           updateList();
-        };
+        });
         li.appendChild(removeBtn);
-        return li.outerHTML;
-      }).join("");
-  };
-
-  dropzone?.addEventListener("click", () => fileInput.click());
-  fileInput?.addEventListener("change", () => {
-    Array.from(fileInput.files).forEach(file => uploadedFiles.add(file.name));
-    updateList();
-    fileInput.value = "";
-  });
-
-  ["dragenter", "dragover"].forEach(evt => dropzone?.addEventListener(evt, e => {
-    e.preventDefault();
-    dropzone.classList.add("dragover");
-  }));
-
-  ["dragleave", "drop"].forEach(evt => dropzone?.addEventListener(evt, e => {
-    e.preventDefault();
-    dropzone.classList.remove("dragover");
-    if (evt === "drop") {
-      Array.from(e.dataTransfer.files).forEach(file => uploadedFiles.add(file.name));
-      updateList();
+        fileList.appendChild(li);
+      });
     }
-  }));
+  }
 
-  // === Country Generator ===
+  if (dropzone && fileInput && fileList) {
+    dropzone.addEventListener("click", () => fileInput.click());
+
+    fileInput.addEventListener("change", () => {
+      const files = Array.from(fileInput.files);
+      files.forEach((file) => {
+        if (!uploadedFiles.has(file.name)) {
+          uploadedFiles.add(file.name);
+        }
+      });
+      updateList();
+      fileInput.value = "";
+    });
+
+    ["dragenter", "dragover"].forEach((evt) =>
+      dropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        dropzone.classList.add("dragover");
+      })
+    );
+
+    ["dragleave", "drop"].forEach((evt) =>
+      dropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        dropzone.classList.remove("dragover");
+        if (evt === "drop") {
+          const files = Array.from(e.dataTransfer.files);
+          files.forEach((file) => {
+            if (!uploadedFiles.has(file.name)) {
+              uploadedFiles.add(file.name);
+            }
+          });
+          updateList();
+        }
+      })
+    );
+  }
+
+  // *** START: New Country Generator Code ***
+
   const slider = document.getElementById('country-count-slider');
   const sliderValueDisplay = document.getElementById('slider-value');
   const getCountriesBtn = document.getElementById('get-countries-btn');
   const countriesList = document.getElementById('countries-list');
   const validationMessage = document.getElementById('validation-message');
 
-  const countryData = [
-    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia",
-    "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
-    "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria",
-    "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic",
-    "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus",
-    "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt"
-  ];
-
-  sliderValueDisplay.textContent = slider.value;
-
-  slider?.addEventListener('input', () => {
+  if (slider && sliderValueDisplay && getCountriesBtn && countriesList && validationMessage) {
+    // Initialize slider value display
     sliderValueDisplay.textContent = slider.value;
-  });
 
-  getCountriesBtn?.addEventListener('click', () => {
-    const count = parseInt(slider.value, 10);
-    validationMessage.textContent = '';
+    // Update slider value display dynamically
+    slider.addEventListener('input', () => {
+      sliderValueDisplay.textContent = slider.value;
+      validationMessage.textContent = '';
+      countriesList.innerHTML = '';
+    });
 
-    if (count < 1 || count > 50) {
-      validationMessage.style.color = 'red';
-      validationMessage.textContent = 'Please select a value between 1 and 50.';
-      return;
-    }
+    const countryData = [
+      "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia",
+      "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
+      "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria",
+      "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic",
+      "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus",
+      "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt"
+    ];
 
-    const currentItems = countriesList.children.length;
+    getCountriesBtn.addEventListener('click', () => {
+      const count = parseInt(slider.value, 10);
+      countriesList.innerHTML = '';
+      validationMessage.textContent = '';
 
-    if (currentItems < count) {
-      for (let i = currentItems; i < count; i++) {
+      if (count < 1 || count > 50) {
+        validationMessage.style.color = 'red';
+        validationMessage.textContent = 'Please select a value between 1 and 50.';
+        return;
+      }
+
+      // Pick first N countries, looping if needed
+      let resultCountries = [];
+      for (let i = 0; i < count; i++) {
+        resultCountries.push(countryData[i % countryData.length]);
+      }
+
+      resultCountries.forEach(country => {
         const li = document.createElement('li');
-        li.textContent = countryData[i % countryData.length];
+        li.textContent = country;
         countriesList.appendChild(li);
-      }
-    } else if (currentItems > count) {
-      for (let i = currentItems - 1; i >= count; i--) {
-        countriesList.removeChild(countriesList.children[i]);
-      }
-    }
+      });
 
-    validationMessage.style.color = 'green';
-    validationMessage.textContent = `Showing ${count} countries as requested.`;
-  });
+      validationMessage.style.color = 'green';
+      validationMessage.textContent = `Generated ${count} countries as requested.`;
+    });
+  }
+
+  // *** END: New Country Generator Code ***
+
 });
