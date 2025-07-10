@@ -297,7 +297,6 @@ getCountriesBtn.addEventListener('click', () => {
   validationMessage.textContent = `Showing ${count} ${count === 1 ? 'country' : 'countries'}.`;
 });
 
-// ✅ Set label on initial load
 slider.dispatchEvent(new Event('input'));
 
   
