@@ -57,8 +57,11 @@ If you have VS Code installed:
 ## Who Is This For?
 
  QA Engineers practicing UI automation
+
  Manual testers exploring web elements
+
  Students and beginners learning testing fundamentals
+ 
  Trainers and mentors running QA workshops
 
 
