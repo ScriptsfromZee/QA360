@@ -143,14 +143,16 @@ if (loadDelayBtn) {
     });
   }
 
-  // Text Input Problem
-  const textInput = document.getElementById("text-problem");
-  const textDisplay = document.getElementById("text-display");
-  if (textInput && textDisplay) {
-    textInput.addEventListener("blur", () => {
-      textDisplay.textContent = "You typed: " + textInput.value;
-    });
-  }
+ // Text Input Problem (Real-time)
+const textInput = document.getElementById("text-problem");
+const textDisplay = document.getElementById("text-display");
+
+if (textInput && textDisplay) {
+  textInput.addEventListener("input", () => {
+    textDisplay.textContent = "You typed: " + textInput.value;
+  });
+}
+
 
   // Dynamic Table
   const tableBody = document.getElementById("dynamic-table-body");
