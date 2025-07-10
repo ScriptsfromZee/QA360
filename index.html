@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QA Practice Playground</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f0f4fa;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      .site-description {
+        background: #d9e8ff;
+        border-left: 6px solid #145da0;
+        padding: 20px;
+        border-radius: 8px;
+        font-size: 1.05rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 10px rgba(20, 93, 160, 0.08);
+        max-width: 950px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .site-description p {
+        margin: 0 0 12px 0;
+        line-height: 1.6;
+      }
+      .grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+      }
+      .card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        flex: 1 1 calc(30% - 20px);
+        min-width: 280px;
+        box-sizing: border-box;
+      }
+      .card h3 {
+        color: #0070f3;
+      }
+      button {
+        background-color: #0070f3;
+        color: white;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      input[type="text"],
+      input[type="range"] {
+        padding: 8px;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 14px;
+      }
+      .hidden-blocker {
+        position: absolute;
+        background: rgba(255, 0, 0, 0.3);
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+      }
+      #hover-area {
+        background: #ddd;
+        padding: 10px;
+        display: inline-block;
+      }
+      #secret-text {
+        display: none;
+        margin-top: 8px;
+        color: green;
+      }
+      #dropzone {
+        background: #e9e9e9;
+        border: 2px dashed #999;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+      }
+      #dropzone.dragover {
+        background-color: #cce5ff;
+      }
+      ul {
+        margin-top: 10px;
+        padding-left: 20px;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+      #validation-message {
+        margin-top: 10px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 style="text-align: center">QA Playground by Derek Chizogam</h1>
+
+      <div class="site-description">
+        <p>
+          <strong>Welcome to the QA Practice Playground</strong> a hands-on,
+          interactive demo site created specifically for software testers. This
+          playground is packed with real-world challenges such as dynamic
+          elements, hidden layers, delays, tricky clicks and more.
+        </p>
+        <p>
+          Use this platform to inspect, interact and build automated or manual
+          test cases. Whether you're a beginner or a seasoned QA engineer, this
+          space is for sharpening your testing skills in a safe, experimental
+          environment.
+        </p>
+      </div>
+
+      <div class="grid">
+        <!-- 1. Dynamic ID -->
+        <div class="card">
+          <h3>1. Dynamic ID Element</h3>
+          <button id="dynamic-btn">Click Me</button>
+          <p><em>ID changes on reload. Inspect the element and try to select it!</em></p>
+        </div>
+
+        <!-- 2. Hidden Layer -->
+        <div class="card">
+          <h3>2. Hidden Layer</h3>
+          <div style="position: relative; display: inline-block; width: 100%">
+            <input
+              type="text"
+              placeholder="You can't type here..."
+              readonly
+              style="
+                padding: 10px;
+                font-size: 14px;
+                width: 100%;
+                box-sizing: border-box;
+                position: relative;
+                z-index: 1;
+              "
+            />
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 0, 0, 0.4);
+                z-index: 2;
+                pointer-events: all;
+                border-radius: 6px;
+              "
+            ></div>
+          </div>
+          <p style="margin-top: 10px"><em>There is a layer blocking the input!</em></p>
+        </div>
+
+        <!-- 3. Radio buttons & Checklists -->
+        <div class="card">
+          <h3>3. Radio buttons & Checklists</h3>
+          <button id="ajax-btn">Load Form</button>
+          <p><em>Radio options and checklists will load below.</em></p>
+          <div
+            id="ajax-container"
+            style="margin-top: 1em; border: 1px solid #ccc; padding: 1em"
+          ></div>
+        </div>
+
+        <!-- 4. Mouse Over Reveal -->
+        <div class="card">
+          <h3>4. Mouse Over Reveal</h3>
+          <div id="hover-area">Hover here</div>
+          <div id="secret-text">Peek-a-boo!</div>
+        </div>
+
+        <!-- 5. JavaScript Alert -->
+        <div class="card">
+          <h3>5. JavaScript Alert</h3>
+          <button id="alert-btn">Trigger Alert</button>
+          <p><em>This tests how frameworks handle alerts.</em></p>
+        </div>
+
+        <!-- 6. Class Attribute -->
+        <div class="card">
+          <h3>6. Class Attribute (XPath)</h3>
+          <button class="primary-button">Click Me</button>
+          <p><em>Test XPath or CSS selector using class names.</em></p>
+        </div>
+
+        <!-- 7. Load Delay -->
+        <div class="card">
+          <h3>7. Load Delay</h3>
+          <button id="load-delay-btn">Simulate Load</button>
+          <div id="delayed-section" style="display: none; margin-top: 10px">
+            I hope I did not take too much time
+          </div>
+        </div>
+
+        <!-- 8. Client-Side Delay -->
+        <div class="card">
+          <h3>8. Client-Side Delay</h3>
+          <button id="client-delay-btn">Start Client Task</button>
+          <p id="client-content"></p>
+        </div>
+
+        <!-- 9. Click Event -->
+        <div class="card">
+          <h3>9. Click Event</h3>
+          <button id="broken-button">Try Clicking</button>
+          <p id="click-result"></p>
+        </div>
+
+        <!-- 10. Text Input -->
+        <div class="card">
+          <h3>10. Text Input</h3>
+          <input
+            id="text-problem"
+            type="text"
+            placeholder="Type something..."
+          />
+          <p id="text-display" style="margin-top: 10px"></p>
+        </div>
+
+        <!-- 11. Dynamic Table -->
+        <div class="card">
+          <h3>11. Dynamic Table</h3>
+          <table border="1" width="100%">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="dynamic-table-body"></tbody>
+          </table>
+        </div>
+
+        <!-- 12. File Upload -->
+        <div class="card">
+          <h3>12. File Upload</h3>
+          <div id="dropzone">Drop files here or click to upload</div>
+          <input type="file" id="file-upload" multiple style="display: none" />
+          <ul id="file-list">
+            <li>No files uploaded yet.</li>
+          </ul>
+        </div>
+
+        <!-- Add this inside your existing grid, after other cards -->
+
+<div class="card">
+  <h3>13. Country Generator</h3>
+  <label for="country-count-slider">
+    Select number of countries: <span id="slider-value">1</span>
+  </label>
+  <input
+    type="range"
+    id="country-count-slider"
+    min="1"
+    max="50"
+    value="1"
+    style="width: 100%; margin-top: 10px; display: block;"
+  />
+  <button id="get-countries-btn" style="margin-top: 10px;">Get Countries</button>
+  <ul id="countries-list" style="margin-top: 15px; max-height: 200px; overflow-y: auto; padding-left: 20px;"></ul>
+  <p id="validation-message" style="color: green; margin-top: 10px; font-weight: 600;"></p>
+</div>
+
+</script>
+src="scripts.js"
+    </script>
+  </body>
+</html>
