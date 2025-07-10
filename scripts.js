@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     dynamicButton.id = `dynamic-btn-${Math.floor(Math.random() * 10000)}`;
   }
 
-  //Radio and Checklist Form
+  // Radio and Checklist Form
   const ajaxBtn = document.getElementById("ajax-btn");
   if (ajaxBtn) {
     ajaxBtn.addEventListener("click", () => {
@@ -21,21 +21,20 @@ document.addEventListener("DOMContentLoaded", () => {
           ajaxContainer.innerHTML = "Loading form...";
           setTimeout(() => {
             ajaxContainer.innerHTML = `
-             <form>
-               <p><strong>Choose your role:</strong></p>
-               <label><input type="radio" name="role" value="Tester"> Tester</label><br>
-               <label><input type="radio" name="role" value="Developer"> Developer</label><br>
-               <label><input type="radio" name="role" value="Manager"> Manager</label><br><br>
+              <form>
+                <p><strong>Choose your role:</strong></p>
+                <label><input type="radio" name="role" value="Tester"> Tester</label><br>
+                <label><input type="radio" name="role" value="Developer"> Developer</label><br>
+                <label><input type="radio" name="role" value="Manager"> Manager</label><br><br>
 
-               <p><strong>Select skills:</strong></p>
-               <label><input type="checkbox" name="skills" value="HTML"> HTML</label><br>
-               <label><input type="checkbox" name="skills" value="JavaScript"> JavaScript</label><br>
-               <label><input type="checkbox" name="skills" value="Python"> Python</label><br><br>
+                <p><strong>Select skills:</strong></p>
+                <label><input type="checkbox" name="skills" value="HTML"> HTML</label><br>
+                <label><input type="checkbox" name="skills" value="JavaScript"> JavaScript</label><br>
+                <label><input type="checkbox" name="skills" value="Python"> Python</label><br><br>
 
-               <button type="button" id="close-form">Close Form</button>
-             </form>
-           `;
-
+                <button type="button" id="close-form">Close Form</button>
+              </form>
+            `;
             const closeFormBtn = document.getElementById("close-form");
             if (closeFormBtn) {
               closeFormBtn.addEventListener("click", () => {
@@ -52,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Load User Info Simulated
+  // Load User Info (demo)
   const loadUserBtn = document.getElementById("load-user-btn");
   if (loadUserBtn) {
     loadUserBtn.addEventListener("click", () => {
@@ -61,15 +60,15 @@ document.addEventListener("DOMContentLoaded", () => {
         userInfo.textContent = "Loading user data...";
         setTimeout(() => {
           userInfo.innerHTML = `
-              <strong>Name:</strong> Bug Hunter Zee<br/>
-              <strong>Email:</strong> bughunter@bugs.com
-            `;
+            <strong>Name:</strong> Bug Hunter Zee<br/>
+            <strong>Email:</strong> bughunter@bugs.com
+          `;
         }, 2000);
       }
     });
   }
 
-  // Mouse Over Reveal
+  // Mouse Hover Reveal
   const hoverArea = document.getElementById("hover-area");
   const secretText = document.getElementById("secret-text");
   if (hoverArea && secretText) {
@@ -80,7 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
       secretText.style.display = "none";
     });
   }
-  // Alert on Button Click
+
+  // JavaScript Alert
   const alertBtn = document.getElementById("alert-btn");
   if (alertBtn) {
     alertBtn.addEventListener("click", () => {
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Click on Element with Class Attribute
+  // Class Attribute Click
   const primaryBtn = document.querySelector(".primary-button");
   if (primaryBtn) {
     primaryBtn.addEventListener("click", () => {
@@ -96,22 +96,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
- // Load Delay Button Logic
-const loadDelayBtn = document.getElementById("load-delay-btn");
-const delayedSection = document.getElementById("delayed-section");
+  // Load Delay with Reset
+  const loadDelayBtn = document.getElementById("load-delay-btn");
+  const delayedSection = document.getElementById("delayed-section");
+  if (loadDelayBtn && delayedSection) {
+    loadDelayBtn.addEventListener("click", () => {
+      delayedSection.style.display = "block";
+      delayedSection.textContent = "Loading...";
+      setTimeout(() => {
+        delayedSection.textContent = "I hope I did not take too much time";
+        setTimeout(() => {
+          delayedSection.style.display = "none";
+          delayedSection.textContent = "";
+        }, 3000);
+      }, 2500);
+    });
+  }
 
-if (loadDelayBtn && delayedSection) {
-  loadDelayBtn.addEventListener("click", () => {
-    delayedSection.style.display = "block";  // Show container immediately
-    delayedSection.textContent = "Loading..."; // Show loading message
-
-    setTimeout(() => {
-      delayedSection.textContent = "I hope I did not take too much time"; // Final message after delay
-    }, 2500);
-  });
-}
-
-  
   // Client-side Delay
   const clientDelayBtn = document.getElementById("client-delay-btn");
   if (clientDelayBtn) {
@@ -125,7 +126,8 @@ if (loadDelayBtn && delayedSection) {
       }
     });
   }
-  // Click Event Problem Simulation
+
+  // Click Event Simulation
   const brokenButton = document.getElementById("broken-button");
   const clickResult = document.getElementById("click-result");
   let clickCount = 0;
@@ -144,7 +146,7 @@ if (loadDelayBtn && delayedSection) {
     });
   }
 
-  // Text Input Problem
+  // Text Input Capture
   const textInput = document.getElementById("text-problem");
   const textDisplay = document.getElementById("text-display");
   if (textInput && textDisplay) {
@@ -153,7 +155,7 @@ if (loadDelayBtn && delayedSection) {
     });
   }
 
-  // Dynamic Table
+  // Dynamic Table Simulation
   const tableBody = document.getElementById("dynamic-table-body");
   const sampleUsers = [
     { id: 101, name: "Alice Johnson", status: "Active" },
@@ -174,17 +176,17 @@ if (loadDelayBtn && delayedSection) {
       tableBody.innerHTML = sampleUsers
         .map(
           (user) => `
-            <tr>
-              <td>${user.id}</td>
-              <td>${user.name}</td>
-              <td>${user.status}</td>
-            </tr>`
+          <tr>
+            <td>${user.id}</td>
+            <td>${user.name}</td>
+            <td>${user.status}</td>
+          </tr>`
         )
         .join("");
     }, 5000);
   }
 
-  // File Upload Emulator with Remove Feature
+  // File Upload Logic
   const dropzone = document.getElementById("dropzone");
   const fileInput = document.getElementById("file-upload");
   const fileList = document.getElementById("file-list");
@@ -251,61 +253,53 @@ if (loadDelayBtn && delayedSection) {
     );
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.getElementById('country-count-slider');
-    const sliderValueDisplay = document.getElementById('slider-value');
-    const getCountriesBtn = document.getElementById('get-countries-btn');
-    const countriesList = document.getElementById('countries-list');
-    const validationMessage = document.getElementById('validation-message');
-  
-    const countryData = [
-      "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia",
-      "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
-      "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria",
-      "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic",
-      "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus",
-      "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt"
-    ];
-  
-    // Show initial slider value
+  // Country Generator Feature
+  const slider = document.getElementById("country-count-slider");
+  const sliderValueDisplay = document.getElementById("slider-value");
+  const getCountriesBtn = document.getElementById("get-countries-btn");
+  const countriesList = document.getElementById("countries-list");
+  const validationMessage = document.getElementById("validation-message");
+
+  const countryData = [
+    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia",
+    "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
+    "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria",
+    "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic",
+    "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus",
+    "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt"
+  ];
+
+  sliderValueDisplay.textContent = slider.value;
+
+  slider.addEventListener("input", () => {
     sliderValueDisplay.textContent = slider.value;
-  
-    // Update slider display but DO NOT reset the list or validation message
-    slider.addEventListener('input', () => {
-      sliderValueDisplay.textContent = slider.value;
-      // We don't clear countriesList or validationMessage here
-    });
-  
-    getCountriesBtn.addEventListener('click', () => {
-      const count = parseInt(slider.value, 10);
-      validationMessage.textContent = '';
-  
-      if (count < 1 || count > 50) {
-        validationMessage.style.color = 'red';
-        validationMessage.textContent = 'Please select a value between 1 and 50.';
-        return;
-      }
-  
-      const currentItems = countriesList.children.length;
-  
-      if (currentItems < count) {
-        // Add countries to the list
-        for (let i = currentItems; i < count; i++) {
-          const li = document.createElement('li');
-          li.textContent = countryData[i % countryData.length];
-          countriesList.appendChild(li);
-        }
-      } else if (currentItems > count) {
-        // Remove countries from the list
-        for (let i = currentItems - 1; i >= count; i--) {
-          countriesList.removeChild(countriesList.children[i]);
-        }
-      }
-      // else if equal, do nothing
-  
-      validationMessage.style.color = 'green';
-      validationMessage.textContent = `Showing ${count} countries as requested.`;
-    });
   });
-  
+
+  getCountriesBtn.addEventListener("click", () => {
+    const count = parseInt(slider.value, 10);
+    validationMessage.textContent = "";
+
+    if (count < 1 || count > 50) {
+      validationMessage.style.color = "red";
+      validationMessage.textContent = "Please select a value between 1 and 50.";
+      return;
+    }
+
+    const currentItems = countriesList.children.length;
+
+    if (currentItems < count) {
+      for (let i = currentItems; i < count; i++) {
+        const li = document.createElement("li");
+        li.textContent = countryData[i % countryData.length];
+        countriesList.appendChild(li);
+      }
+    } else if (currentItems > count) {
+      for (let i = currentItems - 1; i >= count; i--) {
+        countriesList.removeChild(countriesList.children[i]);
+      }
+    }
+
+    validationMessage.style.color = "green";
+    validationMessage.textContent = `Showing ${count} countries as requested.`;
+  });
 });
