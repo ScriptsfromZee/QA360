@@ -1,7 +1,6 @@
 # QA360
 An interactive demo site for software testers featuring real-world challenges like dynamic elements, hidden layers, delays and tricky clicks. Perfect for beginners to practice and build automated or manual test cases in a safe, hands-on environment.
 
-
 # QA 360 a.k.a. QA Practice Playground  
 
 Welcome to the QA Practice Playground: a hands-on, interactive demo site created specifically for software testers. This project offers a collection of real-world testing challenges and scenarios that QA engineers may encounter in web applications.
@@ -20,11 +19,11 @@ JavaScript Alerts: A button triggers a native browser alert. This tests alert ha
 
 Class Attribute Targeting: Buttons or elements styled with shared classes, ideal for practicing XPath or CSS selector strategies.
 
-Load Delay: Simulates a delayed UI element. When a button is clicked, content appears after a few seconds — useful for wait strategy testing.
+Load Delay: Simulates a delayed UI element. When a button is clicked, content appears after a few seconds. It is useful for wait strategy testing.
 
 Client-Side Delay: Imitates a long-running task handled entirely on the client-side, such as calculations or rendering-heavy operations.
 
-Broken Button Logic: Clicking a button once doesn't work — it requires multiple clicks. This is designed to simulate flakiness or user frustration scenarios.
+Broken Button Logic: Clicking a button once doesn't work, it requires multiple clicks. This is designed to simulate flakiness or user frustration scenarios.
 
 Text Input Tracker: As users type into the input box, the text is displayed in real-time. It supports edge cases like long inputs and text wrapping.
 
@@ -34,7 +33,7 @@ Text Input Tracker: As users type into the input box, the text is displayed in r
 
  Country Generator: Lets users choose how many countries to display via a slider. Countries are added or removed without resetting the list, simulating dynamic content updates.
 
-##How to Run the Project
+## How to Run the Project
 
 You don’t need any frameworks, installations or servers. This project is built using pure HTML, CSS and JavaScript.
 
@@ -55,7 +54,7 @@ If you have VS Code installed:
 2. Open the folder in VS Code.
 3. Right-click `index.html` and select "Open with Live Server".
 
-##Who Is This For?
+## Who Is This For?
 
  QA Engineers practicing UI automation
  Manual testers exploring web elements
