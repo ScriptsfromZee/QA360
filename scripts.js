@@ -95,19 +95,22 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Class attribute element clicked!");
     });
   }
-  // Load Delay Section
-  const loadDelayBtn = document.getElementById("load-delay-btn");
-  if (loadDelayBtn) {
-    loadDelayBtn.addEventListener("click", () => {
-      const delayedSection = document.getElementById("delayed-section");
-      if (delayedSection) {
-        delayedSection.style.display = "none";
-        setTimeout(() => {
-          delayedSection.style.display = "block";
-        }, 2500);
-      }
-    });
-  }
+ // Load Delay Section
+const loadDelayBtn = document.getElementById("load-delay-btn");
+if (loadDelayBtn) {
+  loadDelayBtn.addEventListener("click", () => {
+    const delayedSection = document.getElementById("delayed-section");
+    if (delayedSection) {
+      delayedSection.style.display = "block"; // Make sure it's visible
+      delayedSection.textContent = "Loading..."; // Show loading message
+
+      setTimeout(() => {
+        delayedSection.textContent = "I hope I did not take too much time";
+      }, 2500);
+    }
+  });
+}
+
   // Client-side Delay
   const clientDelayBtn = document.getElementById("client-delay-btn");
   if (clientDelayBtn) {
