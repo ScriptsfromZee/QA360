@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 5000);
   }
 
-  // File Upload Emulator with Remove Feature
+  
   const dropzone = document.getElementById("dropzone");
   const fileInput = document.getElementById("file-upload");
   const fileList = document.getElementById("file-list");
@@ -262,13 +262,11 @@ const countryData = [
   "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt"
 ];
 
-// ✅ Show correct label on slider move
 slider.addEventListener('input', () => {
   const count = parseInt(slider.value, 10);
   sliderValueDisplay.textContent = `${count} ${count === 1 ? 'Country' : 'Countries'}`;
 });
 
-// ✅ Populate the list on button click (without resetting every time)
 getCountriesBtn.addEventListener('click', () => {
   const count = parseInt(slider.value, 10);
   validationMessage.textContent = '';
