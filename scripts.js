@@ -247,25 +247,13 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  // *** START: New Country Generator Code ***
-
-  const slider = document.getElementById('country-count-slider');
-  const sliderValueDisplay = document.getElementById('slider-value');
-  const getCountriesBtn = document.getElementById('get-countries-btn');
-  const countriesList = document.getElementById('countries-list');
-  const validationMessage = document.getElementById('validation-message');
-
-  if (slider && sliderValueDisplay && getCountriesBtn && countriesList && validationMessage) {
-    // Initialize slider value display
-    sliderValueDisplay.textContent = slider.value;
-
-    // Update slider value display dynamically
-    slider.addEventListener('input', () => {
-      sliderValueDisplay.textContent = slider.value;
-      validationMessage.textContent = '';
-      countriesList.innerHTML = '';
-    });
-
+  document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('country-count-slider');
+    const sliderValueDisplay = document.getElementById('slider-value');
+    const getCountriesBtn = document.getElementById('get-countries-btn');
+    const countriesList = document.getElementById('countries-list');
+    const validationMessage = document.getElementById('validation-message');
+  
     const countryData = [
       "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia",
       "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
@@ -274,35 +262,48 @@ document.addEventListener("DOMContentLoaded", () => {
       "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus",
       "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt"
     ];
-
+  
+    // Set slider width to 100% to avoid extra space:
+    slider.style.width = '100%';
+  
+    // Display initial slider value
+    sliderValueDisplay.textContent = slider.value;
+  
+    slider.addEventListener('input', () => {
+      sliderValueDisplay.textContent = slider.value;
+      // Don't reset list or message on slider change
+    });
+  
     getCountriesBtn.addEventListener('click', () => {
       const count = parseInt(slider.value, 10);
-      countriesList.innerHTML = '';
       validationMessage.textContent = '';
-
+  
       if (count < 1 || count > 50) {
         validationMessage.style.color = 'red';
         validationMessage.textContent = 'Please select a value between 1 and 50.';
         return;
       }
-
-      // Pick first N countries, looping if needed
-      let resultCountries = [];
-      for (let i = 0; i < count; i++) {
-        resultCountries.push(countryData[i % countryData.length]);
+  
+      const currentItems = countriesList.children.length;
+  
+      if (currentItems < count) {
+        // Add countries one by one without resetting
+        for (let i = currentItems; i < count; i++) {
+          const li = document.createElement('li');
+          li.textContent = countryData[i % countryData.length];
+          countriesList.appendChild(li);
+        }
+      } else if (currentItems > count) {
+        // Remove countries one by one from the end
+        for (let i = currentItems - 1; i >= count; i--) {
+          countriesList.removeChild(countriesList.children[i]);
+        }
       }
-
-      resultCountries.forEach(country => {
-        const li = document.createElement('li');
-        li.textContent = country;
-        countriesList.appendChild(li);
-      });
-
+      // If equal, do nothing
+  
       validationMessage.style.color = 'green';
-      validationMessage.textContent = `Generated ${count} countries as requested.`;
+      validationMessage.textContent = `Showing ${count} countries as requested.`;
     });
-  }
-
-  // *** END: New Country Generator Code ***
-
+  });
+  
 });
