@@ -300,7 +300,5 @@ getCountriesBtn.addEventListener('click', () => {
   validationMessage.textContent = `Showing ${count} ${count === 1 ? 'country' : 'countries'}.`;
 });
 
-slider.dispatchEvent(new Event('input'));
-
-  
+slider.dispatchEvent(new Event('input'));  
 });
