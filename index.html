@@ -285,45 +285,94 @@
           <p id="validation-message" style="color: green; margin-top: 10px; font-weight: 600;"></p>
         </div>
 
-        <!-- 14. Full Feature Form -->
+       <!-- 14. Full Feature Form -->
 <div class="card">
   <h3>14. Full Feature Form</h3>
-  <form>
-    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-      <input type="text" placeholder="First Name" style="flex: 1;" />
-      <input type="text" placeholder="Last Name" style="flex: 1;" />
-      <input type="email" placeholder="Email" style="flex: 1;" />
-      <select style="flex: 1;">
-        <option>USA (+1)</option>
-        <option>Nigeria (+234)</option>
-        <option>UK (+44)</option>
-      </select>
-      <input type="tel" placeholder="Phone Number" style="flex: 1;" />
-      <input type="text" placeholder="Address Line-1" style="flex: 1;" />
-      <input type="text" placeholder="Address Line-2" style="flex: 1;" />
-      <input type="text" placeholder="State" style="flex: 1;" />
-      <input type="text" placeholder="Postal Code" style="flex: 1;" />
-      <select style="flex: 1;">
-        <option>Afghanistan</option>
-        <option>Nigeria</option>
-        <option>USA</option>
-        <option>UK</option>
-      </select>
-      <input type="date" placeholder="Date of Birth" style="flex: 1;" />
+  <form id="full-form">
+    <div style="display: flex; flex-wrap: wrap; gap: 20px">
+      <div style="flex: 1 1 45%">
+        <label>First Name</label>
+        <input type="text" placeholder="Text input" style="width: 100%" />
+      </div>
+      <div style="flex: 1 1 45%">
+        <label>Last Name</label>
+        <input type="text" placeholder="Text input" style="width: 100%" />
+      </div>
+      <div style="flex: 1 1 45%">
+        <label>Email</label>
+        <input type="email" placeholder="hello@" style="width: 100%" />
+      </div>
+      <div style="flex: 1 1 45%">
+        <label>Country Code</label>
+        <select style="width: 100%">
+          <option value="+1">USA (+1)</option>
+          <option value="+234">Nigeria (+234)</option>
+          <option value="+44">UK (+44)</option>
+          <option value="+91">India (+91)</option>
+          <option value="+81">Japan (+81)</option>
+          <option value="+49">Germany (+49)</option>
+          <!-- Add all others as needed -->
+        </select>
+      </div>
+      <div style="flex: 1 1 45%">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="Phone Number" style="width: 100%" />
+      </div>
+      <div style="flex: 1 1 45%">
+        <label>Address Line-1</label>
+        <input type="text" placeholder="Address Line-1" style="width: 100%" />
+      </div>
+      <div style="flex: 1 1 45%">
+        <label>Address Line-2</label>
+        <input type="text" placeholder="Address Line-2" style="width: 100%" />
+      </div>
+      <div style="flex: 1 1 45%">
+        <label>State</label>
+        <input type="text" placeholder="State" style="width: 100%" />
+      </div>
+      <div style="flex: 1 1 45%">
+        <label>Postal Code</label>
+        <input type="text" placeholder="Postal-Code" style="width: 100%" />
+      </div>
+      <div style="flex: 1 1 45%">
+        <label>Country</label>
+        <select style="width: 100%">
+          <option>Afghanistan</option>
+          <option>Albania</option>
+          <option>Algeria</option>
+          <option>Argentina</option>
+          <option>Australia</option>
+          <option>Bangladesh</option>
+          <option>Belgium</option>
+          <option>Brazil</option>
+          <option>Canada</option>
+          <option>China</option>
+          <option>Egypt</option>
+          <option>France</option>
+          <option>Germany</option>
+          <option>India</option>
+          <option>Japan</option>
+          <option>Kenya</option>
+          <option>Nigeria</option>
+          <option>South Africa</option>
+          <option>UK</option>
+          <option>USA</option>
+        </select>
+      </div>
+      <div style="flex: 1 1 45%">
+        <label>Date Of Birth</label>
+        <input type="date" style="width: 100%" />
+      </div>
+      <div style="flex: 1 1 45%">
+        <label>Gender</label><br />
+        <label><input type="radio" name="gender" /> Male</label>
+        <label><input type="radio" name="gender" /> Female</label>
+        <label><input type="radio" name="gender" /> Other</label>
+      </div>
+      <div style="flex: 1 1 100%; margin-top: 10px">
+        <label><input type="checkbox" /> I agree to the terms and conditions</label>
+      </div>
     </div>
-
-    <div style="margin-top: 10px;">
-      <strong>Gender:</strong><br />
-      <label><input type="radio" name="gender" /> Male</label>
-      <label><input type="radio" name="gender" /> Female</label>
-      <label><input type="radio" name="gender" /> Transgender</label>
-    </div>
-
-    <div style="margin-top: 10px;">
-      <label><input type="checkbox" /> I agree to the terms and conditions</label>
-    </div>
-
-    <button type="submit" style="margin-top: 15px;">Submit</button>
   </form>
 </div>
 
