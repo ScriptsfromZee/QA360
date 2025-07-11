@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+  
+      body > *:not(footer) {
+        min-height: calc(100vh - 120px); /* adjust 120px if your footer height changes */
+      }
+  
+      footer {
+        clear: both;
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top: 40px;
+        font-size: 0.9rem;
+        color: #555;
+        padding: 20px 0;
+        background-color: #f9f9f9;
+        border-top: 1px solid #ddd;
+      }
+    </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>QA Practice Playground</title>
@@ -498,7 +521,36 @@
     </div>
   </form>
 </div>
-    
+
+<footer style="
+  clear: both;
+  display: block;
+  width: 100vw;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #000;
+  padding: 20px;
+  background-color: #d9e8ff;
+  border-left: 6px solid #145da0;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(20, 93, 160, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+">
+  <p style="margin: 6px 0;"><strong>QA Playground by Derek Chizogam</strong></p>
+  <p style="margin: 6px 0; font-style: italic;">Empowering QA Engineers through learning and experimentation</p>
+  <p style="margin: 6px 0;">
+    © 2025 | 
+    <a href="mailto:derekchizogam@gmail.com" style="color: #000; text-decoration: none; margin: 0 8px;">Email</a> | 
+    <a href="https://github.com/ScriptsfromZee" target="_blank" rel="noopener noreferrer" style="color: #000; text-decoration: none; margin: 0 8px;">GitHub</a> | 
+    <a href="http://www.linkedin.com/in/chizogamderek" target="_blank" rel="noopener noreferrer" style="color: #000; text-decoration: none; margin: 0 8px;">LinkedIn</a>
+  </p>
+</footer>
+
+ 
 <script src="scripts.js"></script>
 
   </body>
