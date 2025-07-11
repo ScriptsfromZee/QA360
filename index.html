@@ -294,13 +294,19 @@
           </label>
         
           <input
-            type="range"
-            id="country-count-slider"
-            min="1"
-            max="50"
-            value="1"
-            style="width: 100%; margin-top: 10px;"
-          />
+  type="range"
+  id="country-count-slider"
+  min="1"
+  max="50"
+  value="1"
+  style="width: 100%; margin-top: 10px;"
+  role="slider"
+  aria-valuemin="1"
+  aria-valuemax="50"
+  aria-valuenow="1"
+  aria-label="Select number of countries"
+/>
+
         
           <button id="get-countries-btn" style="margin-top: 10px;">Get Countries</button>
         
