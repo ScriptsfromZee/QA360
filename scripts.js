@@ -301,5 +301,5 @@ getCountriesBtn.addEventListener('click', () => {
 });
 
 slider.dispatchEvent(new Event('input'));
-  
+
 });
