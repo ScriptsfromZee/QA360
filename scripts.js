@@ -130,15 +130,17 @@ if (loadDelayBtn) {
     });
   }
 
- // Text Input Problem (Real-time)
+// Text Input Problem (Real-time)
 const textInput = document.getElementById("text-problem");
 const textDisplay = document.getElementById("text-display");
 
 if (textInput && textDisplay) {
   textInput.addEventListener("input", () => {
-    textDisplay.textContent = "You typed: " + textInput.value;
+    const value = textInput.value.trim();
+    textDisplay.textContent = value ? "You typed: " + value : "";
   });
 }
+
 
 
   // Dynamic Table
