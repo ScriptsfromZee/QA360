@@ -141,8 +141,6 @@ if (textInput && textDisplay) {
   });
 }
 
-
-
   // Dynamic Table
   const tableBody = document.getElementById("dynamic-table-body");
   const sampleUsers = [
