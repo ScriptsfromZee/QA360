@@ -78,26 +78,26 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Class attribute element clicked!");
     });
   }
-// Load Delay Section
-const loadDelayBtn = document.getElementById("load-delay-btn");
-if (loadDelayBtn) {
-  loadDelayBtn.addEventListener("click", () => {
-    const delayedSection = document.getElementById("delayed-section");
-    if (delayedSection) {
-      delayedSection.style.display = "block";
-      delayedSection.textContent = "Loading...";
-
-      setTimeout(() => {
-        delayedSection.textContent = "I hope I did not take too much time";
+  // Load Delay Section
+  const loadDelayBtn = document.getElementById("load-delay-btn");
+  if (loadDelayBtn) {
+    loadDelayBtn.addEventListener("click", () => {
+      const delayedSection = document.getElementById("delayed-section");
+      if (delayedSection) {
+        delayedSection.style.display = "block";
+        delayedSection.textContent = "Loading...";
 
         setTimeout(() => {
-          delayedSection.style.display = "none";
-          delayedSection.textContent = "";
+          delayedSection.textContent = "I hope I did not take too much time";
+
+          setTimeout(() => {
+            delayedSection.style.display = "none";
+            delayedSection.textContent = "";
+          }, 2500);
         }, 2500);
-      }, 2500);
-    }
-  });
-}
+      }
+    });
+  }
   // Client-side Delay
   const clientDelayBtn = document.getElementById("client-delay-btn");
   if (clientDelayBtn) {
@@ -130,16 +130,16 @@ if (loadDelayBtn) {
     });
   }
 
-// Text Input Problem (Real-time)
-const textInput = document.getElementById("text-problem");
-const textDisplay = document.getElementById("text-display");
+  // Text Input Problem (Real-time)
+  const textInput = document.getElementById("text-problem");
+  const textDisplay = document.getElementById("text-display");
 
-if (textInput && textDisplay) {
-  textInput.addEventListener("input", () => {
-    const value = textInput.value.trim();
-    textDisplay.textContent = value ? "You typed: " + value : "";
-  });
-}
+  if (textInput && textDisplay) {
+    textInput.addEventListener("input", () => {
+      const value = textInput.value.trim();
+      textDisplay.textContent = value ? "You typed: " + value : "";
+    });
+  }
 
   // Dynamic Table
   const tableBody = document.getElementById("dynamic-table-body");
@@ -171,7 +171,7 @@ if (textInput && textDisplay) {
         .join("");
     }, 5000);
   }
-  
+
   const dropzone = document.getElementById("dropzone");
   const fileInput = document.getElementById("file-upload");
   const fileList = document.getElementById("file-list");
@@ -238,54 +238,102 @@ if (textInput && textDisplay) {
     );
   }
 
-  const slider = document.getElementById('country-count-slider');
-const sliderValueDisplay = document.getElementById('slider-value');
-const getCountriesBtn = document.getElementById('get-countries-btn');
-const countriesList = document.getElementById('countries-list');
-const validationMessage = document.getElementById('validation-message');
+  const slider = document.getElementById("country-count-slider");
+  const sliderValueDisplay = document.getElementById("slider-value");
+  const getCountriesBtn = document.getElementById("get-countries-btn");
+  const countriesList = document.getElementById("countries-list");
+  const validationMessage = document.getElementById("validation-message");
 
-const countryData = [
-  "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia",
-  "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
-  "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria",
-  "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic",
-  "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus",
-  "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt"
-];
+  const countryData = [
+    "Afghanistan",
+    "Albania",
+    "Algeria",
+    "Andorra",
+    "Angola",
+    "Antigua and Barbuda",
+    "Argentina",
+    "Armenia",
+    "Australia",
+    "Austria",
+    "Azerbaijan",
+    "Bahamas",
+    "Bahrain",
+    "Bangladesh",
+    "Barbados",
+    "Belarus",
+    "Belgium",
+    "Belize",
+    "Benin",
+    "Bhutan",
+    "Bolivia",
+    "Bosnia and Herzegovina",
+    "Botswana",
+    "Brazil",
+    "Brunei",
+    "Bulgaria",
+    "Burkina Faso",
+    "Burundi",
+    "Cambodia",
+    "Cameroon",
+    "Canada",
+    "Cape Verde",
+    "Central African Republic",
+    "Chad",
+    "Chile",
+    "China",
+    "Colombia",
+    "Comoros",
+    "Congo",
+    "Costa Rica",
+    "Croatia",
+    "Cuba",
+    "Cyprus",
+    "Czech Republic",
+    "Denmark",
+    "Djibouti",
+    "Dominica",
+    "Dominican Republic",
+    "East Timor",
+    "Ecuador",
+    "Egypt",
+  ];
 
-slider.addEventListener('input', () => {
-  const count = parseInt(slider.value, 10);
-  sliderValueDisplay.textContent = `${count} ${count === 1 ? 'Country' : 'Countries'}`;
-});
+  slider.addEventListener("input", () => {
+    const count = parseInt(slider.value, 10);
+    sliderValueDisplay.textContent = `${count} ${
+      count === 1 ? "Country" : "Countries"
+    }`;
+  });
 
-getCountriesBtn.addEventListener('click', () => {
-  const count = parseInt(slider.value, 10);
-  validationMessage.textContent = '';
+  getCountriesBtn.addEventListener("click", () => {
+    const count = parseInt(slider.value, 10);
+    validationMessage.textContent = "";
 
-  if (count < 1 || count > 50) {
-    validationMessage.style.color = 'red';
-    validationMessage.textContent = 'Please select between 1 and 50.';
-    return;
-  }
-
-  const currentCount = countriesList.children.length;
-
-  if (currentCount < count) {
-    for (let i = currentCount; i < count; i++) {
-      const li = document.createElement('li');
-      li.textContent = countryData[i % countryData.length];
-      countriesList.appendChild(li);
+    if (count < 1 || count > 50) {
+      validationMessage.style.color = "red";
+      validationMessage.textContent = "Please select between 1 and 50.";
+      return;
     }
-  } else if (currentCount > count) {
-    for (let i = currentCount - 1; i >= count; i--) {
-      countriesList.removeChild(countriesList.children[i]);
+
+    const currentCount = countriesList.children.length;
+
+    if (currentCount < count) {
+      for (let i = currentCount; i < count; i++) {
+        const li = document.createElement("li");
+        li.textContent = countryData[i % countryData.length];
+        countriesList.appendChild(li);
+      }
+    } else if (currentCount > count) {
+      for (let i = currentCount - 1; i >= count; i--) {
+        countriesList.removeChild(countriesList.children[i]);
+      }
     }
-  }
 
-  validationMessage.style.color = 'green';
-  validationMessage.textContent = `Showing ${count} ${count === 1 ? 'country' : 'countries'}.`;
-});
+    validationMessage.style.color = "green";
+    validationMessage.textContent = `Showing ${count} ${
+      count === 1 ? "country" : "countries"
+    }.`;
+  });
 
-slider.dispatchEvent(new Event('input'));
-
+  slider.dispatchEvent(new Event("input"));
 });
