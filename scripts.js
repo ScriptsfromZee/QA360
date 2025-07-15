@@ -52,23 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Load User Info Simulated
-  const loadUserBtn = document.getElementById("load-user-btn");
-  if (loadUserBtn) {
-    loadUserBtn.addEventListener("click", () => {
-      const userInfo = document.getElementById("user-info");
-      if (userInfo) {
-        userInfo.textContent = "Loading user data...";
-        setTimeout(() => {
-          userInfo.innerHTML = `
-              <strong>Name:</strong> Bug Hunter Zee<br/>
-              <strong>Email:</strong> bughunter@bugs.com
-            `;
-        }, 2000);
-      }
-    });
-  }
-
   // Mouse Over Reveal
   const hoverArea = document.getElementById("hover-area");
   const secretText = document.getElementById("secret-text");
@@ -188,7 +171,6 @@ if (textInput && textDisplay) {
         .join("");
     }, 5000);
   }
-
   
   const dropzone = document.getElementById("dropzone");
   const fileInput = document.getElementById("file-upload");
