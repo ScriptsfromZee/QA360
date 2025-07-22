@@ -336,4 +336,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   slider.dispatchEvent(new Event("input"));
+
+  const phoneInput = document.getElementById('phone-number');
+
+  phoneInput.addEventListener('input', () => {
+    phoneInput.value = phoneInput.value.replace(/\D/g, '');
+    if (phoneInput.value.length > 15) {
+      phoneInput.value = phoneInput.value.slice(0, 15);
+    }
+  });
 });
