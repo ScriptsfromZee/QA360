@@ -1,0 +1,24 @@
+{
+  "name": "qa360",
+  "version": "1.0.0",
+  "description": "An interactive demo site for software testers featuring real-world challenges like dynamic elements, hidden layers, delays and tricky clicks. Perfect for beginners to practice and build automated or manual test cases in a safe, hands-on environment.",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ScriptsfromZee/QA360.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ScriptsfromZee/QA360/issues"
+  },
+  "homepage": "https://github.com/ScriptsfromZee/QA360#readme",
+  "devDependencies": {
+    "cypress": "^14.5.2"
+  }
+}
