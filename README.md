@@ -64,7 +64,7 @@ If you have VS Code installed:
 
 4. Trainers and mentors running QA workshops
 
-   ##Testing
+## Testing
    The Test Script present in the folder was used in Cypress 
 
 
