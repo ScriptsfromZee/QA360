@@ -1,6 +1,2 @@
 node_modules/
-cypress/e2e/*
-!cypress/e2e/Tests.cy.js
-support/
-fixtures/
 sample.txt
