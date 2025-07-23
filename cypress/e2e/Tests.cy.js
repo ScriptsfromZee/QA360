@@ -95,7 +95,7 @@ describe("QA Playground Tests", () => {
   });
 
   it("Adjusts Country Count and Validates", () => {
-    cy.get("#country-count-slider").invoke("val", 50).trigger("input");
+    cy.get("#country-count-slider").invoke("val", 50).trigger("input"); // This Shifts the slider to whatever number of countries you want to display 
     cy.get("#get-countries-btn").click();
     cy.get("#countries-list li").should("have.length", 50);
     cy.get("#validation-message").should("contain", "Showing 50 countries.");
