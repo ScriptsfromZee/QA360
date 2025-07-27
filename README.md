@@ -65,6 +65,17 @@ If you have VS Code installed:
 4. Trainers and mentors running QA workshops
 
 ## Testing
-   The Test Script present in the folder was used in Cypress 
+   This project uses Cypress for end-to-end testing.
 
+The test script included in the project folder covers key user interactions and behaviors to ensure consistent functionality.
+
+To run the Cypress tests:
+
+npx cypress open
+
+This will launch the Cypress Test Runner for an interactive testing experience.
+
+Make sure to run npm install before running the tests to install all required dependencies.
+
+While Cypress is the primary testing tool used, the project is built in a way that allows testing with any automation framework of your choice such as Playwright, Selenium or WebdriverIO depending on your preferred stack.
 
