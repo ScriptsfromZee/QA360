@@ -1,6 +1,7 @@
 describe("QA Playground Tests", () => {
   beforeEach(() => {
-    cy.visit("index.html"); // adjust to actual URL if deployed on netlify or any hosting site
+    cy.visit("index.html"); // adjust to actual URL
+    // https://qaplayground.netlify.app/ This is the deployed URL
   });
 
   it("Handles Dynamic ID Element", () => {
