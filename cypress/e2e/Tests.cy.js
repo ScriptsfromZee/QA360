@@ -94,7 +94,7 @@ describe("QA Playground Tests", () => {
     cy.get("#file-list").should("contain", "No files uploaded yet.");
   });
 
-  it.only("Uploads Existing File and Removes Uploaded File", () => {
+  it("Uploads Existing File and Removes Uploaded File", () => {
     const fileName = "sample.pdf"; // This file was created in the fixtures folder. 
     cy.get("#file-upload").selectFile(`cypress/fixtures/${fileName}`, { force: true });
     cy.get("#file-list li").should("contain", fileName);
@@ -103,10 +103,10 @@ describe("QA Playground Tests", () => {
   });
 
   it("Adjusts Country Count and Validates", () => {
-    cy.get("#country-count-slider").invoke("val", 50).trigger("input"); // This Shifts the slider to whatever number of countries you want to display 
+    cy.get("#country-count-slider").invoke("val", 17).trigger("input"); // This Shifts the slider to whatever number of countries you want to display 
     cy.get("#get-countries-btn").click();
-    cy.get("#countries-list li").should("have.length", 50);
-    cy.get("#validation-message").should("contain", "Showing 50 countries.");
+    cy.get("#countries-list li").should("have.length", 17);
+    cy.get("#validation-message").should("contain", "Showing 17 countries.");
   });
 
   it("Submits Full Feature Form", () => {
