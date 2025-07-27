@@ -1,9 +1,9 @@
 # QA360
 An interactive demo site for software testers featuring real-world challenges like dynamic elements, hidden layers, delays and tricky clicks. Perfect for beginners to practice and build automated or manual test cases in a safe, hands-on environment.
 
-# QA 360 a.k.a. QA Practice Playground  
+# QA 360 a.k.a. QA Playground  
 
-Welcome to the QA Practice Playground: a hands-on, interactive demo site created specifically for software testers. This project offers a collection of real-world testing challenges and scenarios that QA engineers may encounter in web applications.
+Welcome to the QA Playground: a hands-on, interactive demo site created specifically for software testers. This project offers a collection of real-world testing challenges and scenarios that QA engineers may encounter in web applications.
 
 ## Features & Descriptions
 
