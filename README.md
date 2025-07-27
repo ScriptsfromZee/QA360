@@ -67,7 +67,7 @@ If you have VS Code installed:
 ## Testing
    This project uses Cypress for end-to-end testing.
 
-The test script included in the project folder covers key user interactions and behaviors to ensure consistent functionality.
+The test script included in the project folder covers key user interactions and behaviors to ensure consistent functionality. As I get better with automation, I will update my scripts. 
 
 To run the Cypress tests:
 
