@@ -85,12 +85,20 @@ describe("QA Playground Tests", () => {
     cy.get("#dynamic-table-body tr").should("have.length.at.least", 1); // This tests that at least one row is present in the table
   });
 
-  it("Uploads and Removes File", () => {
+  it("Creates a file, Uploads it and Removes Uploaded File", () => {
     const fileName = "sample.txt";
     cy.writeFile(fileName, "Test content"); // This creates a sample file in our project
     cy.get("#file-upload").selectFile(fileName, { force: true }); //This uploads your created file
     cy.get("#file-list li").should("contain", fileName);
     cy.contains("Remove").click(); // To remove uploaded file
+    cy.get("#file-list").should("contain", "No files uploaded yet.");
+  });
+
+  it.only("Uploads Existing File and Removes Uploaded File", () => {
+    const fileName = "sample.pdf"; // This file was created in the fixtures folder. 
+    cy.get("#file-upload").selectFile(`cypress/fixtures/${fileName}`, { force: true });
+    cy.get("#file-list li").should("contain", fileName);
+    cy.contains("Remove").click();
     cy.get("#file-list").should("contain", "No files uploaded yet.");
   });
 
