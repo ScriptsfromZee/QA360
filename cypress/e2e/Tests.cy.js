@@ -26,9 +26,11 @@ describe("QA Playground Tests", () => {
     cy.get("#ajax-container").should("be.empty");
   });
 
-  it("Shows Secret Text on Hover", () => {
+  it.only("Shows Secret Text on Hover", () => {
     cy.get("#hover-area").trigger("mouseover");
     cy.get("#secret-text").should("be.visible");
+    // This can also be done by using...
+    cy.get("#hover-area").invoke('show')
   });
 
   it("Handles JavaScript Alert", () => {
