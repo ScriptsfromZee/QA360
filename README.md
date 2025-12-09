@@ -54,6 +54,8 @@ If you have VS Code installed:
 2. Open the folder in VS Code.
 3. Right-click `index.html` and select "Open with Live Server".
 
+### Option 3: Use the deployed Url : https://qaplayground.netlify.app/
+
 ## Who Is This For?
 
 1.  QA Engineers practicing UI automation
