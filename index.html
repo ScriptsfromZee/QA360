@@ -453,7 +453,26 @@
   #full-form button[type="submit"]:hover {
     background-color: #005fa3;
   }
+
+  /* This new CSS is for the select dropdown handling long country names */
+  #full-form select {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+    overflow-x: auto; /* This enables horizontal scrolling */
+    white-space: nowrap; /* This prevents wrapping */
+  }
+
+  #full-form select option {
+    white-space: nowrap; /* This prevents option text from wrapping */
+  }
 </style>
+
 
 <div class="card">
   <h3>15. Full Feature Form</h3>
