@@ -1,0 +1,15 @@
+{
+  "firstName": "Bug",
+  "lastName": "Hunter",
+  "email": "bughunter@qa.com",
+  "countryCode": "Nigeria (+234)",
+  "phoneNumber": "8012345678",
+  "address1": "UI Bug",
+  "address2": "Performance Bug",
+  "state": "Transition",
+  "postalCode": "100001",
+  "country": "Nigeria",
+  "dob": "1990-01-01",
+  "gender": "male",
+  "acceptTerms": true
+}

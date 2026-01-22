@@ -1,14 +1,14 @@
 describe("QA Playground Tests", () => {
   beforeEach(() => {
-    cy.visit("index.html"); // adjust to actual URL
-    // https://qaplayground.netlify.app/ This is the deployed URL
+    cy.visit("index.html"); // adjust to actual URL.I use this because I have the project locally so I just point to the index file
+    // https://qaplayground.netlify.app/ This is the deployed URL of the project
   });
 
-  it("Handles Dynamic ID Element", () => {
+  it("This handles Dynamic ID Element", () => {
     cy.contains("Inspect Me").should("be.visible").click();
-  }); // the id of this button always changes when the page is refreshed
+  }); // the id of this button always changes when the page is refreshed so make sure you always go back to change it in your script but you can use the same method I used here.
 
-  it("Type in  the Hidden Layer Blocking Input", () => {
+  it("Type in the Hidden Layer Blocking Input", () => {
     const text = "I am typing through the blocker";
     cy.contains(".card", "2. Hidden Layer")
       .find('input[type="text"]')
@@ -20,16 +20,17 @@ describe("QA Playground Tests", () => {
     cy.get("#ajax-btn").click();
     cy.contains("Loading form...");
     cy.contains("Choose your role:").should("exist");
-    cy.get('input[type="radio"][value="Tester"]').check();
-    cy.get('input[type="checkbox"][value="HTML"]').check();
-    cy.contains("Close Form").click();
+    cy.get('input[type="radio"][value="Tester"]').check(); // This selects the Tester radio button
+    cy.get('input[type="checkbox"][value="HTML"], [value="JavaScript"]').check(); // This checks the HTML and JavaScript checkboxes
+    cy.wait (2500); // This is just to visually see the selection before submitting
+    cy.contains("Close Form").click(); //This closes the Form
     cy.get("#ajax-container").should("be.empty");
   });
 
-  it.only("Shows Secret Text on Hover", () => {
+  it("Shows Secret Text on Hover", () => {
     cy.get("#hover-area").trigger("mouseover");
     cy.get("#secret-text").should("be.visible");
-    // This can also be done by using...
+    // This can also be done by using the line below. It is faster and simpler
     cy.get("#hover-area").invoke('show')
   });
 
@@ -112,22 +113,26 @@ describe("QA Playground Tests", () => {
     cy.get("#validation-message").should("contain", "Showing 17 countries.");
   });
 
-  it("Submits Full Feature Form", () => {
-    cy.get("#first-name").type("Bug");
-    cy.get("#last-name").type("Hunter");
-    cy.get("#email").type("bughunter@qa.com");
-    cy.wait(2000);
-    cy.get("#country-codes").select("Nigeria (+234)");
-    cy.get("#phone-number").type("8012345678");
-    cy.get("#address1").type("UI Bug");
-    cy.get("#address2").type("Perfomance Bug");
-    cy.get("#state").type("Transition");
-    cy.get("#postal-code").type("100001");
-    cy.wait(2000);
-    cy.get("#country").select("Nigeria");
-    cy.get("#dob").type("1990-01-01");
-    cy.get('input[type="radio"][value="male"]').check();
-    cy.get('input[type="checkbox"]').check();
-    cy.get("#full-form").submit();
+  it.only('fills the form with fixture data', () => {
+    cy.fixture('user').then((user) => {
+      cy.get("#first-name").type(user.firstName);
+      cy.get("#last-name").type(user.lastName);
+      cy.get("#email").type(user.email);
+      cy.wait(2000);
+      cy.get("#country-codes").select(user.countryCode);
+      cy.get("#phone-number").type(user.phoneNumber);
+      cy.get("#address1").type(user.address1);
+      cy.get("#address2").type(user.address2);
+      cy.get("#state").type(user.state);
+      cy.get("#postal-code").type(user.postalCode);
+      cy.wait(2000);
+      cy.get("#country").select(user.country);
+      cy.get("#dob").type(user.dob);
+      cy.get(`input[type="radio"][value="${user.gender}"]`).check();
+      if (user.acceptTerms) {
+        cy.get('input[type="checkbox"]').check();
+      }
+      cy.get("#full-form").submit();
+    });
   });
 });
